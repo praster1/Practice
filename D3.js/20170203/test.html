@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Univariate distribution relationships</title>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+				
+		
+		<style>
+			svg{	width:320px, height:240px; border: 1px solid black;	}
+			rect{	fill:orange;	}
+		</style>
+		
+	</head>
+	
+	
+	<body>
+		<div id = "myGraph"></div>
+	</body>
+	
+	<script>
+		d3.select("#myGraph").append("svg").append("rect")
+		.attr("x", "10px").attr("y", "50px").attr("width", "200px").attr("height", "30px")
+		.transition().duration(3000).attr("width", "50px");	// 애니메이션 설정 (3초간 변화)
+		
+		d3.select("#myGraph").append("svg").append("text")
+		.attr("x", "10px").attr("y", "50px").attr("width", "200px").attr("height", "30px")
+	</script>
+	
+</html>

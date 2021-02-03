@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Univariate distribution relationships</title>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+				
+		<style>
+			svg {	width:1000px, height:300px; border: 1px solid black;	}
+			.bar {	fill:orange;	}
+		</style>
+		
+	</head>
+	
+	
+	<body>
+	
+		<svg id = "myGraph"></svg>
+		
+	</body>
+	
+	<script>
+		d3.csv("mydata.csv", function(error, data)
+			{
+				var dataSet = [];
+				for (var i = 0 ; i < data.length ; i++)
+				{
+					dataSet.push(data[i].item1);
+				}
+				
+			d3.select("#myGraph").selectAll("rect")
+			.data(dataSet)															// 데이터를 rect에 연결
+			.enter()																		// 데이터 개수만큼 반복
+			.append("rect")															// 데이터 개수만큼 rect가 추가됨
+			.attr("class", "bar")														// CSS 클래스를 지정
+			.attr("x", 0).attr("y", "50px").attr("width", "1000px").attr("height", "30px").transition().duration(3000)
+			.attr("width", function(d, i) { return d; })					//	너비를 지정
+			.attr("height", 20)
+			.attr("x", 0).attr("y", function(d, i){ return (i*25) })
+		})
+
+	</script>
+	
+</html>

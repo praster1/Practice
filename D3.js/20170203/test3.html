@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Univariate distribution relationships</title>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	
+		<script>		
+			function button1_click()
+			{
+				var rand = function(min, max) {
+						return Math.floor(Math.random() * (max - min + 1)) + min;
+				};
+					
+				var dataLen = document.getElementById("dataLen").value;
+				var dataMin = document.getElementById("dataMin").value;
+				var dataMax = document.getElementById("dataMax").value;
+				var dataSet = [];
+				
+				for (var i = 0 ; i < dataLen ; i++)
+				{
+						dataSet.push(rand(dataMin, dataMax));
+				}
+			
+					
+				d3.select("#myGraph").select("svg").remove();
+					
+				d3.select("#myGraph").append("svg").selectAll("rect")
+				.data(dataSet)															// 데이터를 rect에 연결
+				.enter()																		// 데이터 개수만큼 반복
+				.append("rect")															// 데이터 개수만큼 rect가 추가됨
+				.attr("class", "bar")														// CSS 클래스를 지정
+				.attr("x", 0).attr("y", "1000px").attr("width", "100px").attr("height", "100px").transition().duration(1000)
+				.attr("width", function(d, i) { return d; })					//	너비를 지정
+				.attr("height", 20)
+				.attr("x", 0).attr("y", function(d, i){ return (i*25) })
+			}
+		</script>		
+	</head>
+	
+	
+	<body>
+	
+		<h1> Random Number Generator</h1>
+	
+		데이터 개수: <INPUT TYPE="text" id="dataLen" Value="10" SIZE=15 />
+		최소값: <INPUT TYPE="text" id="dataMin" Value="1" SIZE=15 />
+		최대값: <INPUT TYPE="text" id="dataMax" Value="5" SIZE=15 />
+		<input type="button" NAME="argument" onclick="button1_click();" Value="생성하기" />
+		
+		<br/>
+		
+		<svg id = "myGraph" width="500" height="500" viewbox="0 0 500 500"></svg>
+		
+	</body>
+	
+	
+</html>

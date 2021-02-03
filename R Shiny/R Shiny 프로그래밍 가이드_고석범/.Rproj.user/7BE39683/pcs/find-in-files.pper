@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "~/Dropbox/Notes/R_notes/RShinyProgramming",
+        "query" : "고립 지역",
+        "regex" : false
+    }
+}
